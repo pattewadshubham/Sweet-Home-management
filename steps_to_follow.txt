@@ -1,0 +1,79 @@
+1.Install Docker & Compose (Ubuntu)
+
+sudo apt update
+sudo apt install docker.io -y
+sudo apt install docker-compose-plugin -y
+
+docker --version
+docker compose version
+
+
+2. Post-install Docker steps
+
+sudo groupadd docker       # may already exist
+sudo usermod -aG docker $USER
+newgrp docker
+
+3. Fix DNS issue (if images fail to pull)
+
+
+sudo vim /etc/docker/daemon.json
+
+{
+  "dns": ["8.8.8.8", "8.8.4.4"]
+}
+
+sudo systemctl restart docker
+
+
+4. Test Docker
+
+docker run hello-world
+docker run --rm busybox nslookup google.com
+
+
+5. Create docker-compose.yml
+
+6. Start PostgreSQL container
+docker compose up -d
+docker ps
+
+
+7. Environment variables file (.env)
+
+
+POSTGRES_USER=shubham
+POSTGRES_PASSWORD=password
+POSTGRES_DB=sweetshop
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5433
+
+
+
+8. Python connection with SQLAlchemy
+
+pip install sqlalchemy psycopg2-binary python-dotenv
+
+
+create python file db_connect.py to test if connection can be made or not ?
+
+
+9.run file python db_connect.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

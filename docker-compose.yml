@@ -1,0 +1,19 @@
+version: "3.9"  # Docker Compose file format version
+
+services:  
+  db:  # our database service
+    image: postgres:15  # use official Postgres version 15 image
+    container_name: sweetshop_db  # custom name for the container
+    restart: always  # restart container automatically if it crashes
+    environment:
+      POSTGRES_USER: sweetuser        # username for the database
+      POSTGRES_PASSWORD: sweetpass    # password for the database
+      POSTGRES_DB: sweetshop_dev      # initial database name
+    ports:
+      - "5433:5432"  # map local port 5432 to Postgres port 5432 inside container
+    volumes:
+      - db_data:/var/lib/postgresql/data  # store DB data on your machine (persistent)
+
+volumes:
+  db_data:  # named volume for persisting database data
+
